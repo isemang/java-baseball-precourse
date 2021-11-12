@@ -65,19 +65,66 @@ public class ApplicationTest extends NSTest {
         assertThat(attacker.attackNumSize()).isEqualTo(3);
     }
 
-    @Test
-    void 세자리를_입력받으면_정상() {
+    //세자리를_입력받으면_정상, 네자리를_입력받으면_비정상_재입력을_요청한다, 입력받은_세자리_숫자에_중복되는_숫자가_있으면_재입력을_요청한다
 
+    @Test
+    void 두_숫자_비교_1스트라이크_2볼() {
+        Defender defender = new Defender();
+        defender.compare(324, 342);
+
+        int strike = defender.getStrikeCnt();
+        int ball = defender.getBallCnt();
+
+        assertThat(strike).isEqualTo(1);
+        assertThat(ball).isEqualTo(2);
     }
 
     @Test
-    void 네자리를_입력받으면_비정상_재입력을_요청한다() {
-        
+    void 두_숫자_비교_2스트라이크() {
+        Defender defender = new Defender();
+        defender.compare(325, 326);
+
+        int strike = defender.getStrikeCnt();
+        int ball = defender.getBallCnt();
+
+        assertThat(strike).isEqualTo(2);
+        assertThat(ball).isEqualTo(0);
     }
 
     @Test
-    void 입력받은_세자리_숫자에_중복되는_숫자가_있으면_재입력을_요청한다() {
+    void 두_숫자_비교_3볼() {
+        Defender defender = new Defender();
+        defender.compare(325, 532);
 
+        int strike = defender.getStrikeCnt();
+        int ball = defender.getBallCnt();
+
+        assertThat(strike).isEqualTo(0);
+        assertThat(ball).isEqualTo(3);
+    }
+
+    @Test
+    void 두_숫자_비교_낫싱() {
+        Defender defender = new Defender();
+        defender.compare(325, 187);
+
+        int strike = defender.getStrikeCnt();
+        int ball = defender.getBallCnt();
+
+        assertThat(strike).isEqualTo(0);
+        assertThat(ball).isEqualTo(0);
+    }
+
+    @Test
+    void 두_숫자_비교_3스트라이크() {
+        Defender defender = new Defender();
+        defender.compare(325, 325);
+
+        int strike = defender.getStrikeCnt();
+        int ball = defender.getBallCnt();
+
+        assertThat(strike).isEqualTo(3);
+        assertThat(ball).isEqualTo(0);
     }
 
 //    @Test
