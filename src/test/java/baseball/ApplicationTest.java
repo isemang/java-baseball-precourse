@@ -55,7 +55,14 @@ public class ApplicationTest extends NSTest {
     @Test
     void 공격하는_숫자를_입력받고_저장하는_객체_생성() {
         Attacker attacker = new Attacker();
+        attacker.getAttackNum();
         assertThat(attacker).isNotNull();
+    }
+
+    @Test
+    void 입력받은_숫자가_세자리인지_확인한다() {
+        Attacker attacker = new Attacker();
+        assertThat(attacker.attackNumSize()).isEqualTo(3);
     }
 
     @Test
@@ -69,7 +76,7 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
-    void 세자리_숫자_입력_받은_후_저장_잘되었는지_확인() {
+    void 입력받은_세자리_숫자에_중복되는_숫자가_있으면_재입력을_요청한다() {
 
     }
 
