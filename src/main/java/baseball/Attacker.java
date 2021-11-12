@@ -14,12 +14,12 @@ public class Attacker {
     private Scanner sc = new Scanner(System.in);
 
     Attacker () {
-        setAttackNum();
-        while(!setAttackNumPassed()) setAttackNum();
+        inputAttackNum();
+        while(!restrictionsPassed()) inputAttackNum();
         sc.close();
     }
 
-    private boolean setAttackNumPassed() {
+    private boolean restrictionsPassed() {
         if(attackNumSize() != LENGTH) {
             System.out.println("반드시 "+LENGTH+"자리 숫자를 입력해야 합니다.");
             return false;
@@ -45,7 +45,7 @@ public class Attacker {
         return true;
     }
 
-    private void setAttackNum() {
+    private void inputAttackNum() {
         System.out.print("숫자를 입력하세요 : ");
         attackNum = sc.nextInt();
     }
