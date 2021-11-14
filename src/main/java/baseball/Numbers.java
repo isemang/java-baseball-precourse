@@ -17,14 +17,14 @@ public class Numbers {
         makeNumber();
     }
 
-    public int[] getNumbers() {
-        int[] array = new int[LENGTH];
+    public String getNumbers() {
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < LENGTH; i++) {
-            array[i] = numList.get(i);
+            sb.append(numList.get(i));
         }
 
-        return array;
+        return sb.toString();
     }
 
     private void makeNumber() {
