@@ -1,8 +1,6 @@
 package baseball;
 
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 import static baseball.Numbers.LENGTH;
 
@@ -50,11 +48,11 @@ public class Attacker {
         attackNum = sc.nextInt();
     }
 
-    public int getAttackNum(){
-        return attackNum;
+    public String getAttackNum(){
+        return Integer.toString(attackNum);
     }
 
     public int attackNumSize() {
-        return Integer.toString(attackNum).split("").length;
+        return (int) Math.log10(attackNum) + 1;
     }
 }
