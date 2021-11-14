@@ -1,23 +1,18 @@
 package baseball;
 
 import nextstep.test.NSTest;
-import nextstep.utils.Randoms;
+import nextstep.utils.CountUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 
-import java.sql.Array;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 import static baseball.Numbers.LENGTH;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
 
 public class ApplicationTest extends NSTest {
-    int[] array;
 
     @Override
     public void runMain() {
@@ -26,30 +21,20 @@ public class ApplicationTest extends NSTest {
 
     @BeforeEach
     void beforeEach() {
-        Numbers numbers = new Numbers();
-        array = numbers.getNumbers();
         super.setUp();
     }
     
     @Test
     void 랜덤으로_3자리_숫자를_뽑는다() {
-        for (int num : array) {
-            System.out.print(num);
-        }
+        Numbers numbers = new Numbers();
+        System.out.println(numbers.getNumbers());
     }
 
     @Test
     void 뽑은_3자리_숫자가_중복되지_않는지_확인한다() {
         Set<Integer> set = new HashSet<>();
-        for (int num : array) {
-            set.add(num);
-        }
-        assertThat(set.size()).isEqualTo(LENGTH);
-    }
 
-    @Test
-    void 뽑은_숫자가_3자리가_맞는지_확인한다() {
-        assertThat(array.length).isEqualTo(LENGTH);
+        assertThat(set.size()).isEqualTo(LENGTH);
     }
 
     @Test
@@ -65,15 +50,19 @@ public class ApplicationTest extends NSTest {
         assertThat(attacker.attackNumSize()).isEqualTo(3);
     }
 
-    //세자리를_입력받으면_정상, 네자리를_입력받으면_비정상_재입력을_요청한다, 입력받은_세자리_숫자에_중복되는_숫자가_있으면_재입력을_요청한다
+    //뽑은_숫자가_3자리가_맞는지_확인한다, 세자리를_입력받으면_정상, 네자리를_입력받으면_비정상_재입력을_요청한다, 입력받은_세자리_숫자에_중복되는_숫자가_있으면_재입력을_요청한다
 
     @Test
     void 두_숫자_비교_1스트라이크_2볼() {
-        Defender defender = new Defender();
-        defender.compare(324, 342);
+//        Numbers numbers = new Numbers();
+        String numStr = "312";
+        String attackStr = "321";
 
-        int strike = defender.getStrikeCnt();
-        int ball = defender.getBallCnt();
+        CountUtil countUtil = new CountUtil();
+        Result result = countUtil.compare(numStr, attackStr);
+
+        int strike = result.getStrikeCnt();
+        int ball = result.getBallCnt();
 
         assertThat(strike).isEqualTo(1);
         assertThat(ball).isEqualTo(2);
@@ -81,50 +70,66 @@ public class ApplicationTest extends NSTest {
 
     @Test
     void 두_숫자_비교_2스트라이크() {
-        Defender defender = new Defender();
-        defender.compare(325, 326);
+//        Numbers numbers = new Numbers();
+        String numStr = "312";
+        String attackStr = "412";
 
-        int strike = defender.getStrikeCnt();
-        int ball = defender.getBallCnt();
+        CountUtil countUtil = new CountUtil();
+        Result result = countUtil.compare(numStr, attackStr);
+
+        int strike = result.getStrikeCnt();
+        int ball = result.getBallCnt();
 
         assertThat(strike).isEqualTo(2);
-        assertThat(ball).isEqualTo(0);
+        assertThat(ball).isZero();
     }
 
     @Test
     void 두_숫자_비교_3볼() {
-        Defender defender = new Defender();
-        defender.compare(325, 532);
+//        Numbers numbers = new Numbers();
+        String numStr = "312";
+        String attackStr = "123";
 
-        int strike = defender.getStrikeCnt();
-        int ball = defender.getBallCnt();
+        CountUtil countUtil = new CountUtil();
+        Result result = countUtil.compare(numStr, attackStr);
 
-        assertThat(strike).isEqualTo(0);
+        int strike = result.getStrikeCnt();
+        int ball = result.getBallCnt();
+
+        assertThat(strike).isZero();
         assertThat(ball).isEqualTo(3);
     }
 
     @Test
     void 두_숫자_비교_낫싱() {
-        Defender defender = new Defender();
-        defender.compare(325, 187);
+//        Numbers numbers = new Numbers();
+        String numStr = "312";
+        String attackStr = "456";
 
-        int strike = defender.getStrikeCnt();
-        int ball = defender.getBallCnt();
+        CountUtil countUtil = new CountUtil();
+        Result result = countUtil.compare(numStr, attackStr);
 
-        assertThat(strike).isEqualTo(0);
-        assertThat(ball).isEqualTo(0);
+        int strike = result.getStrikeCnt();
+        int ball = result.getBallCnt();
+
+        assertThat(strike).isZero();
+        assertThat(ball).isZero();
     }
 
     @Test
     void 두_숫자_비교_3스트라이크() {
-        Defender defender = new Defender();
-        defender.compare(325, 325);
+//        Numbers numbers = new Numbers();
+        String numStr = "312";
+        String attackStr = "312";
 
-        int strike = defender.getStrikeCnt();
-        int ball = defender.getBallCnt();
+        CountUtil countUtil = new CountUtil();
+        Result result = countUtil.compare(numStr, attackStr);
+
+        int strike = result.getStrikeCnt();
+        int ball = result.getBallCnt();
 
         assertThat(strike).isEqualTo(3);
-        assertThat(ball).isEqualTo(0);
+        assertThat(ball).isZero();
     }
 
 //    @Test
