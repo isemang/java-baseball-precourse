@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static baseball.Numbers.LENGTH;
+import static nextstep.utils.CountUtil.compare;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApplicationTest extends NSTest {
@@ -58,8 +59,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "321";
 
-        CountUtil countUtil = new CountUtil();
-        Result result = countUtil.compare(numStr, attackStr);
+        Result result = CountUtil.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -74,8 +74,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "412";
 
-        CountUtil countUtil = new CountUtil();
-        Result result = countUtil.compare(numStr, attackStr);
+        Result result = CountUtil.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -90,8 +89,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "123";
 
-        CountUtil countUtil = new CountUtil();
-        Result result = countUtil.compare(numStr, attackStr);
+        Result result = CountUtil.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -106,8 +104,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "456";
 
-        CountUtil countUtil = new CountUtil();
-        Result result = countUtil.compare(numStr, attackStr);
+        Result result = CountUtil.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -122,8 +119,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "312";
 
-        CountUtil countUtil = new CountUtil();
-        Result result = countUtil.compare(numStr, attackStr);
+        Result result = CountUtil.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
