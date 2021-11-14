@@ -8,6 +8,9 @@ public class CountUtil {
     private static int strikeCnt = 0;
     private static int ballCnt = 0;
 
+    private CountUtil() {
+    }
+
     public static Result compare(String number, String attackNum) {
         initializeCnt();
 

@@ -32,6 +32,7 @@ public class Attacker {
     }
 
     private boolean isDuplicated() {
+        boolean isDuplicated = true;
         Set<Integer> set = new HashSet<>();
 
         for(String str : Integer.toString(attackNum).split("")) {
@@ -39,8 +40,11 @@ public class Attacker {
             set.add(num);
         }
 
-        if(set.size() == LENGTH) return false;
-        return true;
+        if(set.size() == LENGTH) {
+            isDuplicated = false;
+        }
+
+        return isDuplicated;
     }
 
     private void inputAttackNum() {
