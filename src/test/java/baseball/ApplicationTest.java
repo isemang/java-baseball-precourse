@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static baseball.Numbers.LENGTH;
-import static nextstep.utils.CountUtil.compare;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApplicationTest extends NSTest {
@@ -55,7 +54,6 @@ public class ApplicationTest extends NSTest {
 
     @Test
     void 두_숫자_비교_1스트라이크_2볼() {
-//        Numbers numbers = new Numbers();
         String numStr = "312";
         String attackStr = "321";
 
@@ -70,7 +68,6 @@ public class ApplicationTest extends NSTest {
 
     @Test
     void 두_숫자_비교_2스트라이크() {
-//        Numbers numbers = new Numbers();
         String numStr = "312";
         String attackStr = "412";
 
@@ -85,7 +82,6 @@ public class ApplicationTest extends NSTest {
 
     @Test
     void 두_숫자_비교_3볼() {
-//        Numbers numbers = new Numbers();
         String numStr = "312";
         String attackStr = "123";
 
@@ -100,7 +96,6 @@ public class ApplicationTest extends NSTest {
 
     @Test
     void 두_숫자_비교_낫싱() {
-//        Numbers numbers = new Numbers();
         String numStr = "312";
         String attackStr = "456";
 
@@ -115,7 +110,6 @@ public class ApplicationTest extends NSTest {
 
     @Test
     void 두_숫자_비교_3스트라이크() {
-//        Numbers numbers = new Numbers();
         String numStr = "312";
         String attackStr = "312";
 
@@ -126,6 +120,30 @@ public class ApplicationTest extends NSTest {
 
         assertThat(strike).isEqualTo(3);
         assertThat(ball).isZero();
+    }
+    
+    @Test
+    void 투스트라이크_전광판에_나타내기() {
+        Sign sign = new Sign(2, 0);
+        String result = sign.showResult();
+
+        assertThat(result).isEqualTo("2 스트라이크 ");
+    }
+
+    @Test
+    void 낫싱_전광판에_나타내기() {
+        Sign sign = new Sign(0, 0);
+        String result = sign.showResult();
+
+        assertThat(result).isEqualTo("낫싱");
+    }
+
+    @Test
+    void 투볼_전광판에_나타내기() {
+        Sign sign = new Sign(0, 2);
+        String result = sign.showResult();
+
+        assertThat(result).isEqualTo("2 볼");
     }
 
 //    @Test
