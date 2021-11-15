@@ -32,11 +32,11 @@ public class Judge {
         if (attackNum.contains(str)) {
             int index = attackNum.indexOf(str);
 
-            updateCnt(i, index);
+            updateCount(i, index);
         }
     }
 
-    private static void updateCnt(int i, int index) {
+    private static void updateCount(int i, int index) {
         if(i == index) {
             strikeCount++;
             return;
