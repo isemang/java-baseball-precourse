@@ -1,7 +1,7 @@
 package baseball;
 
 import nextstep.test.NSTest;
-import nextstep.utils.CountUtil;
+import nextstep.utils.Judge;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,7 +57,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "321";
 
-        Result result = CountUtil.compare(numStr, attackStr);
+        Result result = Judge.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -71,7 +71,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "412";
 
-        Result result = CountUtil.compare(numStr, attackStr);
+        Result result = Judge.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -85,7 +85,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "123";
 
-        Result result = CountUtil.compare(numStr, attackStr);
+        Result result = Judge.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -99,7 +99,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "456";
 
-        Result result = CountUtil.compare(numStr, attackStr);
+        Result result = Judge.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
@@ -113,7 +113,7 @@ public class ApplicationTest extends NSTest {
         String numStr = "312";
         String attackStr = "312";
 
-        Result result = CountUtil.compare(numStr, attackStr);
+        Result result = Judge.compare(numStr, attackStr);
 
         int strike = result.getStrikeCnt();
         int ball = result.getBallCnt();
