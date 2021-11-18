@@ -8,10 +8,18 @@ public class Printer {
     }
 
     public static void print(String str) {
+        System.out.print(str);
+    }
+
+    public static void println(String str) {
         System.out.println(str);
     }
 
-    public static void printNoLineBreak(String str) {
-        System.out.print(str);
+    public static void print(PrintType printType) {
+        System.out.print(printType.getMessage());
+    }
+
+    public static void println(PrintType printType) {
+        System.out.println(printType.getMessage());
     }
 }
