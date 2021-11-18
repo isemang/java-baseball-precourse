@@ -1,6 +1,6 @@
 package baseball;
 
-import nextstep.utils.PrintStrings;
+import nextstep.utils.PrintType;
 import nextstep.utils.Printer;
 
 import java.util.*;
@@ -19,12 +19,12 @@ public class VerifyInput {
 
     public static boolean restrictionsPassed(int attackNum) {
         if(attackNumSize(attackNum) != LENGTH) {
-            Printer.print(PrintStrings.LENGTH_VERIFY);
+            Printer.println(PrintType.LENGTH_VERIFY);
             return false;
         }
 
         if(isDuplicated(attackNum)) {
-            Printer.print(PrintStrings.DUPLICATE_VERIFY);
+            Printer.println(PrintType.DUPLICATE_VERIFY);
             return false;
         }
 

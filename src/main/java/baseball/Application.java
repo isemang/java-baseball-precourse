@@ -1,6 +1,6 @@
 package baseball;
 
-import nextstep.utils.PrintStrings;
+import nextstep.utils.PrintType;
 import nextstep.utils.Printer;
 import nextstep.utils.Scan;
 
@@ -23,7 +23,7 @@ public class Application {
 
             while(!GameEnd.isGameEnded(strike, ball)) {
                 while(!restrictionsPassed) {
-                    Printer.printNoLineBreak(PrintStrings.NUMBER_INPUT);
+                    Printer.print(PrintType.NUMBER_INPUT);
                     attackNum = scan.scanValue();
 
                     restrictionsPassed = VerifyInput.restrictionsPassed(attackNum);
@@ -35,13 +35,13 @@ public class Application {
 
                 String resultString = result.makeBaseballResult(strike, ball);
 
-                Printer.print(resultString);
+                Printer.println(resultString);
 
                 restrictionsPassed = false;
             }
 
-            Printer.print(PrintStrings.GAME_END);
-            Printer.print(PrintStrings.NEW_GAME);
+            Printer.println(PrintType.GAME_END);
+            Printer.println(PrintType.NEW_GAME);
             newGameOrNot = scan.scanValue();
         }
 
