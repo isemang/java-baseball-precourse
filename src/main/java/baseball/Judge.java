@@ -1,6 +1,4 @@
-package nextstep.utils;
-
-import baseball.Result;
+package baseball;
 
 import static baseball.Numbers.LENGTH;
 
@@ -37,7 +35,7 @@ public class Judge {
     }
 
     private static void updateCount(int i, int index) {
-        if(i == index) {
+        if (i == index) {
             strikeCount++;
             return;
         }
